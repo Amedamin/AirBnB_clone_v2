@@ -13,10 +13,10 @@ def do_pack():
 
         N = datetime.now()
         FN = (
-            f"versions/web_static_backup_{N.strftime('%Y%m%d_%H%M%S')}"
+            f"versions/web_static_{N.strftime('%Y%m%d_%H%M%S')}"
             + ".tgz"
         )
-        local(f"tar -cvzf versions/{FN} web_static")
+        local(f"tar -cvzf {FN} web_static")
 
         if os.path.exists(FN):
             return FN
