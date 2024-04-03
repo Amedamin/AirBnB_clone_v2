@@ -11,12 +11,12 @@ def do_pack():
         if not os.path.exists("versions"):
             os.makedirs("versions")
 
-        now = datetime.now()
+        N = datetime.now()
         FN = (
-            f"versions/web_static_backup_{now.strftime('%Y%m%d_%H%M%S')}"
+            f"versions/web_static_backup_{N.strftime('%Y%m%d_%H%M%S')}"
             + ".tgz"
         )
-        local(f"tar -cvzf {FN} web_static")
+        local(f"tar -cvzf versions/{FN} web_static")
 
         if os.path.exists(FN):
             return FN
