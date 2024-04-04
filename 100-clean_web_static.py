@@ -6,7 +6,7 @@ from fabric.api import *
 from datetime import datetime
 import os
 
-env.hosts = ['<IP web-01>', '<IP web-02>']
+env.hosts = ["100.25.16.27", "54.237.109.157"]
 env.user = 'ubuntu'
 env.key_filename = ['my_ssh_private_key']
 
@@ -47,7 +47,3 @@ def do_clean(number=0):
         for local_archive in to_delete_local:
             if local_archive.strip():
                 local("rm -f {}".format(local_archive))
-
-
-if __name__ == "__main__":
-    do_clean()
