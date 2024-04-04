@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 """Fabric script"""
-from fabric import *
+from fabric.api import *
 import os
 
 
 env.user = 'ubuntu'
 env.hosts = ["100.25.16.27", "54.237.109.157"]
-
 
 def do_deploy(archive_path):
     """
@@ -17,7 +16,7 @@ def do_deploy(archive_path):
     try:
         put(archive_path, '/tmp/')
         F = os.path.basename(archive_path)
-        N = os.path.splitext(F)[0]
+        N = os.path.splitext(AF)[0]
         P = f"/data/web_static/releases/{N}"
         run(f"mkdir -p {P}")
         run(f"tar -xzf /tmp/{F} -C {P}")
@@ -28,5 +27,5 @@ def do_deploy(archive_path):
         run(f"ln -s {P} /data/web_static/current")
         print("New version deployed!")
         return True
-    except Exception as e:
+    except:
         return False
